@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOLSTICE — Fiche produit</title>
+<link rel="stylesheet" href="style.css?v=7">
+</head>
+<body>
+
+<!-- Fond animé -->
+<div class="fond-anime" aria-hidden="true">
+  <div class="orbe orbe-1"></div>
+  <div class="orbe orbe-2"></div>
+  <div class="orbe orbe-3"></div>
+  <canvas id="particules"></canvas>
+</div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- Bandeau défilant -->
+<div class="bandeau">
+  <div class="bandeau-piste" aria-hidden="true">
+    <span>Livraison <b>24-48h</b> partout en France</span>
+    <span>·</span>
+    <span>Articles <b>vérifiés</b> avant expédition</span>
+    <span>·</span>
+    <span>Paiement <b>sécurisé</b></span>
+    <span>·</span>
+    <span>Service client <b>7j/7</b></span>
+    <span>·</span>
+    <span>Livraison <b>24-48h</b> partout en France</span>
+    <span>·</span>
+    <span>Articles <b>vérifiés</b> avant expédition</span>
+    <span>·</span>
+    <span>Paiement <b>sécurisé</b></span>
+    <span>·</span>
+    <span>Service client <b>7j/7</b></span>
+    <span>·</span>
+  </div>
+</div>
+
+<header id="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Solstice<em>.</em></a>
+    <nav class="principal">
+      <a href="index.html#hiver">Hiver — Doudounes</a>
+      <a href="index.html#ete">Été — Shorts</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn-panier" id="ouvre-panier" aria-label="Panier">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M6 7h12l1.2 13H4.8L6 7z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/>
+        </svg>
+        <span class="badge-panier" id="badge-panier">0</span>
+      </button>
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Menu mobile -->
+<div class="menu-mobile" id="menu-mobile">
+  <a href="index.html#hiver"><em>Collection froid</em>Hiver — Doudounes</a>
+  <a href="index.html#ete"><em>Collection soleil</em>Été — Shorts</a>
+  <a href="index.html#contact"><em>Une question ?</em>Contact</a>
+</div>
+
+<main>
+  <div class="fiche" id="fiche">
+    <!-- Rempli par le script -->
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a href="index.html" class="logo">Solstice<em>.</em></a>
+      <p style="color:var(--gris);font-size:13px;font-weight:300;max-width:260px;margin-top:14px;">
+        Doudounes &amp; shorts des plus grandes marques, sélectionnés avec soin.
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4>Boutique</h4>
+      <a href="index.html#hiver">Hiver — Doudounes</a>
+      <a href="index.html#ete">Été — Shorts</a>
+    </div>
+    <div class="footer-col">
+      <h4>Marques</h4>
+      <a href="index.html#hiver">Ralph Lauren</a>
+      <a href="index.html#hiver">Moncler</a>
+      <a href="index.html#hiver">Canada Goose</a>
+      <a href="index.html#hiver">Arc'teryx</a>
+      <a href="index.html#hiver">Gucci</a>
+      <a href="index.html#hiver">Louis Vuitton</a>
+      <a href="index.html#ete">Burberry</a>
+      <a href="index.html#ete">Denim Tears</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:solstice.boutique@gmail.com">solstice.boutique@gmail.com</a>
+    </div>
+  </div>
+  <div class="footer-bas">
+    <span>© 2026 Solstice. Tous droits réservés.</span>
+    <span>Boutique indépendante, non affiliée aux marques citées.</span>
+  </div>
+</footer>
+
+<!-- Panier -->
+<div class="voile" id="voile"></div>
+<aside class="panier" id="panier">
+  <div class="panier-tete">
+    <h3>Ton panier</h3>
+    <button id="ferme-panier" aria-label="Fermer">×</button>
+  </div>
+  <div class="panier-corps" id="panier-corps"></div>
+  <div class="panier-pied">
+    <div class="panier-total"><span>Total</span><span id="panier-total">0 €</span></div>
+    <div class="panier-note">Déstockage : pièces uniques, une seule par commande.</div>
+    <a href="#" class="btn" id="commander">Envoyer ma commande</a>
+  </div>
+</aside>
+
+<div class="toast" id="toast">Ajouté au panier ✓</div>
+
+<button class="haut" id="haut" aria-label="Retour en haut">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script src="catalogue.js?v=7"></script>
+<script>
+/* ---------- Rendu de la fiche produit ---------- */
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var id = parseInt(params.get('id'), 10);
+  var p = produitParId(id);
+  if (!p) { window.location.href = 'index.html'; return; }
+
+  document.title = 'SOLSTICE — ' + p.marque + ' ' + p.nom;
+
+  var saisonNom = p.saison === 'hiver' ? 'Hiver — Doudounes' : 'Été — Shorts';
+  var saisonLien = 'index.html#' + p.saison;
+  var tailles = p.tailles.split(' · ');
+  var galerie = p.photos && p.photos.length ? p.photos : (p.photo ? [p.photo] : []);
+
+  /* Image principale : photo si dispo, sinon visuel stylisé */
+  function imagePrincipale(src) {
+    var badge = p.badge ? '<span class="badge' + (p.badge === 'Exclusif' ? ' or' : '') + '">' + p.badge + '</span>' : '';
+    var dedans = src
+      ? '<img src="' + src + '" alt="' + p.marque + ' ' + p.nom +
+        '" onerror="photoManquante(this,' + p.id + ')">'
+      : svgProduit(p);
+    return badge + '<div class="visuel" style="background:' + p.fond + '">' + dedans + '</div>';
+  }
+
+  /* Vignettes : photos existantes + emplacements en attente (4 au total) */
+  var vignettes = '';
+  var appareil = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h3l2-3h8l2 3h3v12H3V8z"/><circle cx="12" cy="13" r="3.5"/></svg>';
+  for (var v = 0; v < 4; v++) {
+    if (galerie[v]) {
+      vignettes += '<button class="vignette' + (v === 0 ? ' actif' : '') + '" data-photo="' + galerie[v] +
+        '" style="background:' + p.fond + '">' +
+        '<img src="' + galerie[v] + '" alt="" onerror="photoManquante(this,' + p.id + ')"></button>';
+    } else if (v === 0 && !galerie.length) {
+      vignettes += '<button class="vignette actif" data-photo=""><div style="background:' + p.fond + ';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">' + svgProduit(p) + '</div></button>';
+    } else {
+      vignettes += '<div class="vignette attente">' + appareil + 'Photo<br>à venir</div>';
+    }
+  }
+
+  var relies = PRODUITS.filter(function (x) { return x.saison === p.saison && x.id !== p.id; }).slice(0, 4);
+
+  document.getElementById('fiche').innerHTML =
+    '<div class="fil">' +
+      '<a href="index.html">Accueil</a><span class="sep">/</span>' +
+      '<a href="' + saisonLien + '">' + saisonNom + '</a><span class="sep">/</span>' +
+      '<span>' + p.nom + '</span>' +
+    '</div>' +
+
+    '<div class="fiche-grille">' +
+      '<div class="galerie">' +
+        '<div class="image-principale" id="image-principale">' + imagePrincipale(galerie[0]) + '</div>' +
+        '<div class="vignettes">' + vignettes + '</div>' +
+      '</div>' +
+
+      '<div class="fiche-infos">' +
+        '<div class="marque-fiche">' + p.marque + '</div>' +
+        '<h1>' + p.nom + '</h1>' +
+        '<div class="prix-fiche">' + prixTexte(p) + '</div>' +
+        '<p class="fiche-desc">' + p.desc + '</p>' +
+
+        '<div class="choix-titre"><span>Taille</span><span class="valeur" id="taille-choisie">' + tailles[0] + '</span></div>' +
+        '<div class="tailles-pills" id="tailles">' +
+          tailles.map(function (t, i) {
+            return '<button' + (i === 0 ? ' class="actif"' : '') + ' data-taille="' + t + '">' + t + '</button>';
+          }).join('') +
+        '</div>' +
+
+        '<div class="achat-ligne">' +
+          '<button class="btn-large" id="ajouter-fiche">Ajouter au panier</button>' +
+        '</div>' +
+        '<a class="btn-secondaire" id="commander-direct" href="#">Commander directement cet article</a>' +
+
+        '<ul class="rassurance">' +
+          '<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v5m0 3h.01M12 3l9 16H3z"/></svg>Pièce unique — une seule par commande</li>' +
+          '<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>Article vérifié avant expédition</li>' +
+          '<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>Livraison 24-48h partout en France</li>' +
+          '<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>Paiement sécurisé &amp; service client 7j/7</li>' +
+        '</ul>' +
+
+        '<div class="accordeons">' +
+          '<details open><summary>Description</summary><div class="contenu">' + p.desc + '</div></details>' +
+          '<details><summary>Détails &amp; entretien</summary><div class="contenu">Article ' + p.marque + ' — tailles disponibles : ' + p.tailles + '. Détails complets, matières et conseils d\'entretien communiqués sur demande. N\'hésite pas à nous écrire pour plus de photos ou d\'informations.</div></details>' +
+          '<details><summary>Livraison &amp; retours</summary><div class="contenu">Expédition soignée sous 24-48h partout en France avec suivi. Une question sur ta commande ? Le service client répond 7j/7 à solstice.boutique@gmail.com.</div></details>' +
+        '</div>' +
+      '</div>' +
+    '</div>' +
+
+    '<div class="relies">' +
+      '<h2>Tu aimeras <i>aussi.</i></h2>' +
+      '<div class="grille">' + relies.map(carteProduit).join('') + '</div>' +
+    '</div>';
+
+  /* ---------- Interactions ---------- */
+  var tailleChoisie = tailles[0];
+
+  document.getElementById('tailles').addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (!b) return;
+    this.querySelectorAll('button').forEach(function (x) { x.classList.remove('actif'); });
+    b.classList.add('actif');
+    tailleChoisie = b.dataset.taille;
+    document.getElementById('taille-choisie').textContent = tailleChoisie;
+  });
+
+  // Destockage : pas de quantite, on ajoute toujours un seul exemplaire.
+  document.getElementById('ajouter-fiche').addEventListener('click', function () {
+    ajouterAuPanier(p.id, tailleChoisie);
+    ouvrePanier();
+  });
+
+  document.getElementById('commander-direct').addEventListener('click', function (e) {
+    e.preventDefault();
+    var sujet = encodeURIComponent('Commande — ' + p.marque + ' ' + p.nom);
+    var corps = encodeURIComponent('Bonjour,\r\n\r\nJe souhaite commander :\r\n- ' + p.marque + ' — ' + p.nom +
+      ' | Taille : ' + tailleChoisie +
+      (p.prix ? ' (' + p.prix + ' €)' : ' (prix sur demande)') + '\r\n\r\nMerci !');
+    window.location.href = 'mailto:solstice.boutique@gmail.com?subject=' + sujet + '&body=' + corps;
+  });
+
+  /* Changement de photo via les vignettes (quand il y aura des photos) */
+  document.querySelectorAll('.vignette[data-photo]').forEach(function (v) {
+    v.addEventListener('click', function () {
+      document.querySelectorAll('.vignette').forEach(function (x) { x.classList.remove('actif'); });
+      v.classList.add('actif');
+      document.getElementById('image-principale').innerHTML = imagePrincipale(v.dataset.photo || null);
+    });
+  });
+})();
+</script>
+<script src="site.js?v=7"></script>
+
+</body>
+</html>

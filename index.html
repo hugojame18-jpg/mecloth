@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOLSTICE — Doudounes &amp; Shorts de Marque</title>
+<link rel="stylesheet" href="style.css?v=7">
+</head>
+<body>
+
+<!-- Fond animé -->
+<div class="fond-anime" aria-hidden="true">
+  <div class="orbe orbe-1"></div>
+  <div class="orbe orbe-2"></div>
+  <div class="orbe orbe-3"></div>
+  <canvas id="particules"></canvas>
+</div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- Bandeau défilant -->
+<div class="bandeau">
+  <div class="bandeau-piste" aria-hidden="true">
+    <span>Livraison <b>24-48h</b> partout en France</span>
+    <span>·</span>
+    <span>Articles <b>vérifiés</b> avant expédition</span>
+    <span>·</span>
+    <span>Paiement <b>sécurisé</b></span>
+    <span>·</span>
+    <span>Service client <b>7j/7</b></span>
+    <span>·</span>
+    <span>Livraison <b>24-48h</b> partout en France</span>
+    <span>·</span>
+    <span>Articles <b>vérifiés</b> avant expédition</span>
+    <span>·</span>
+    <span>Paiement <b>sécurisé</b></span>
+    <span>·</span>
+    <span>Service client <b>7j/7</b></span>
+    <span>·</span>
+  </div>
+</div>
+
+<header id="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Solstice<em>.</em></a>
+    <nav class="principal">
+      <a href="#hiver">Hiver — Doudounes</a>
+      <a href="#ete">Été — Shorts</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn-panier" id="ouvre-panier" aria-label="Panier">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M6 7h12l1.2 13H4.8L6 7z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/>
+        </svg>
+        <span class="badge-panier" id="badge-panier">0</span>
+      </button>
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Menu mobile -->
+<div class="menu-mobile" id="menu-mobile">
+  <a href="#hiver"><em>Collection froid</em>Hiver — Doudounes</a>
+  <a href="#ete"><em>Collection soleil</em>Été — Shorts</a>
+  <a href="#contact"><em>Une question ?</em>Contact</a>
+</div>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-titres">
+    <div class="sur-titre">Ralph Lauren · Moncler · Canada Goose · Gucci · Louis Vuitton</div>
+    <h1>
+      <span class="ligne"><span>Le style,</span></span>
+      <span class="ligne"><span><i>toute l'année.</i></span></span>
+    </h1>
+    <p class="hero-sous">Doudounes de grandes marques pour l'hiver, shorts premium pour l'été.</p>
+  </div>
+
+  <div class="duo">
+    <a href="#hiver" class="panneau panneau-hiver reveal">
+      <div class="fond"></div>
+      <svg class="visuel-panneau" viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+        <path d="M60 30 Q100 12 140 30 L168 52 Q178 62 174 78 L162 98 146 86 148 210 Q100 226 52 210 L54 86 38 98 26 78 Q22 62 32 52 Z" fill="#1a2230"/>
+        <path d="M54 86 Q100 100 146 86 M52 122 Q100 136 148 122 M52 156 Q100 170 148 156 M52 188 Q100 202 148 188" stroke="rgba(255,255,255,.14)" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <path d="M84 34 Q100 28 116 34 L116 58 Q100 52 84 58 Z" fill="rgba(0,0,0,.4)"/>
+        <rect x="97" y="60" width="6" height="148" rx="3" fill="rgba(255,255,255,.2)"/>
+        <circle cx="100" cy="80" r="2.6" fill="#d4af6a"/><circle cx="100" cy="112" r="2.6" fill="#d4af6a"/><circle cx="100" cy="144" r="2.6" fill="#d4af6a"/><circle cx="100" cy="176" r="2.6" fill="#d4af6a"/>
+      </svg>
+      <div class="panneau-contenu">
+        <div class="saison-tag">Collection froid</div>
+        <h2>Doudounes d'exception</h2>
+        <span class="lien">Découvrir l'hiver
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <a href="#ete" class="panneau panneau-ete reveal reveal-delai-1">
+      <div class="fond"></div>
+      <svg class="visuel-panneau" viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" style="width:min(54%,260px)">
+        <path d="M46 60 Q100 48 154 60 L166 150 Q168 162 156 164 L118 170 Q110 171 108 162 L100 118 92 162 Q90 171 82 170 L44 164 Q32 162 34 150 Z" fill="#e8dcc4"/>
+        <path d="M46 60 Q100 74 154 60 L152 76 Q100 90 48 76 Z" fill="#c9ba9d"/>
+        <path d="M100 90 L100 118" stroke="#b3a486" stroke-width="3" stroke-linecap="round"/>
+        <path d="M58 88 L64 100 M142 88 L136 100" stroke="#b3a486" stroke-width="2.4" stroke-linecap="round"/>
+        <circle cx="100" cy="68" r="3" fill="#d4af6a"/>
+        <path d="M84 66 Q100 60 116 66" stroke="#d4af6a" stroke-width="1.6" fill="none"/>
+      </svg>
+      <div class="panneau-contenu">
+        <div class="saison-tag">Collection soleil</div>
+        <h2>Shorts premium</h2>
+        <span class="lien">Découvrir l'été
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- Marquee marques -->
+<div class="marquee">
+  <div class="marquee-piste" aria-hidden="true">
+    <span>Ralph Lauren</span><span class="point">✦</span>
+    <span>Moncler</span><span class="point">✦</span>
+    <span>Canada Goose</span><span class="point">✦</span>
+    <span>Arc'teryx</span><span class="point">✦</span>
+    <span>Gucci</span><span class="point">✦</span>
+    <span>Louis Vuitton</span><span class="point">✦</span>
+    <span>Burberry</span><span class="point">✦</span>
+    <span>Denim Tears</span><span class="point">✦</span>
+    <span>Nike</span><span class="point">✦</span>
+    <span>Under Armour</span><span class="point">✦</span>
+    <span>Ralph Lauren</span><span class="point">✦</span>
+    <span>Moncler</span><span class="point">✦</span>
+    <span>Canada Goose</span><span class="point">✦</span>
+    <span>Arc'teryx</span><span class="point">✦</span>
+    <span>Gucci</span><span class="point">✦</span>
+    <span>Louis Vuitton</span><span class="point">✦</span>
+    <span>Burberry</span><span class="point">✦</span>
+    <span>Denim Tears</span><span class="point">✦</span>
+    <span>Nike</span><span class="point">✦</span>
+    <span>Under Armour</span><span class="point">✦</span>
+  </div>
+</div>
+
+<!-- ============ HIVER ============ -->
+<section class="boutique" id="hiver">
+  <div class="entete-section reveal">
+    <div>
+      <span class="num">01 — Collection froid</span>
+      <h2>Hiver, <i>doudounes.</i></h2>
+    </div>
+    <p>Une sélection pointue de doudounes et vestes matelassées des plus grandes maisons.</p>
+  </div>
+  <div class="filtres reveal" data-saison="hiver"></div>
+  <div class="grille" id="grille-hiver"></div>
+</section>
+
+<!-- ============ ÉTÉ ============ -->
+<section class="boutique" id="ete">
+  <div class="entete-section reveal">
+    <div>
+      <span class="num">02 — Collection soleil</span>
+      <h2>Été, <i>shorts.</i></h2>
+    </div>
+    <p>Shorts chino, jogging et maillots premium pour la belle saison.</p>
+  </div>
+  <div class="filtres reveal" data-saison="ete"></div>
+  <div class="grille" id="grille-ete"></div>
+</section>
+
+<!-- Citation -->
+<div class="citation reveal">
+  <blockquote>« La mode se démode, le style jamais. »</blockquote>
+  <div class="auteur">— Coco Chanel</div>
+</div>
+
+<!-- Avantages -->
+<div class="avantages">
+  <div class="avantage reveal">
+    <div class="num">01.</div>
+    <h3>Livraison rapide</h3>
+    <p>Expédition soignée sous 24-48h partout en France, suivi inclus.</p>
+  </div>
+  <div class="avantage reveal reveal-delai-1">
+    <div class="num">02.</div>
+    <h3>Articles vérifiés</h3>
+    <p>Chaque pièce est minutieusement contrôlée avant expédition.</p>
+  </div>
+  <div class="avantage reveal reveal-delai-2">
+    <div class="num">03.</div>
+    <h3>Service client 7j/7</h3>
+    <p>Une question sur une taille, un article ? Réponse rapide, tous les jours.</p>
+  </div>
+  <div class="avantage reveal reveal-delai-3">
+    <div class="num">04.</div>
+    <h3>Paiement sécurisé</h3>
+    <p>Transactions protégées de bout en bout, en toute confiance.</p>
+  </div>
+</div>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+  <h2 class="reveal">Passer <i>commande.</i></h2>
+  <p class="reveal reveal-delai-1">Ajoute tes articles au panier puis envoie ta commande, ou contacte-nous directement pour toute question.</p>
+  <a href="mailto:solstice.boutique@gmail.com" class="btn reveal reveal-delai-2">Nous contacter</a>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a href="index.html" class="logo">Solstice<em>.</em></a>
+      <p style="color:var(--gris);font-size:13px;font-weight:300;max-width:260px;margin-top:14px;">
+        Doudounes &amp; shorts des plus grandes marques, sélectionnés avec soin.
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4>Boutique</h4>
+      <a href="#hiver">Hiver — Doudounes</a>
+      <a href="#ete">Été — Shorts</a>
+    </div>
+    <div class="footer-col">
+      <h4>Marques</h4>
+      <a href="#hiver">Ralph Lauren</a>
+      <a href="#hiver">Moncler</a>
+      <a href="#hiver">Canada Goose</a>
+      <a href="#hiver">Arc'teryx</a>
+      <a href="#hiver">Gucci</a>
+      <a href="#hiver">Louis Vuitton</a>
+      <a href="#ete">Burberry</a>
+      <a href="#ete">Denim Tears</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:solstice.boutique@gmail.com">solstice.boutique@gmail.com</a>
+    </div>
+  </div>
+  <div class="footer-bas">
+    <span>© 2026 Solstice. Tous droits réservés.</span>
+    <span>Boutique indépendante, non affiliée aux marques citées.</span>
+  </div>
+</footer>
+
+<!-- Panier -->
+<div class="voile" id="voile"></div>
+<aside class="panier" id="panier">
+  <div class="panier-tete">
+    <h3>Ton panier</h3>
+    <button id="ferme-panier" aria-label="Fermer">×</button>
+  </div>
+  <div class="panier-corps" id="panier-corps"></div>
+  <div class="panier-pied">
+    <div class="panier-total"><span>Total</span><span id="panier-total">0 €</span></div>
+    <div class="panier-note">Déstockage : pièces uniques, une seule par commande.</div>
+    <a href="#" class="btn" id="commander">Envoyer ma commande</a>
+  </div>
+</aside>
+
+<div class="toast" id="toast">Ajouté au panier ✓</div>
+
+<button class="haut" id="haut" aria-label="Retour en haut">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script src="catalogue.js?v=7"></script>
+<script>
+/* ---------- Rendu des grilles + filtres ---------- */
+function rendreSaison(saison) {
+  var grille = document.getElementById('grille-' + saison);
+  var filtres = document.querySelector('.filtres[data-saison="' + saison + '"]');
+  var produits = PRODUITS.filter(function (p) { return p.saison === saison; });
+  var marques = [];
+  produits.forEach(function (p) { if (marques.indexOf(p.marque) === -1) marques.push(p.marque); });
+
+  filtres.innerHTML = '<button class="actif" data-marque="tous">' + (saison === 'hiver' ? 'Toutes' : 'Tous') + '</button>' +
+    marques.map(function (m) { return '<button data-marque="' + m + '">' + m + '</button>'; }).join('');
+
+  function afficher(marque) {
+    var liste = marque === 'tous' ? produits : produits.filter(function (p) { return p.marque === marque; });
+    grille.innerHTML = liste.map(carteProduit).join('');
+  }
+  afficher('tous');
+
+  filtres.addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (!b) return;
+    filtres.querySelectorAll('button').forEach(function (x) { x.classList.remove('actif'); });
+    b.classList.add('actif');
+    afficher(b.dataset.marque);
+  });
+}
+rendreSaison('hiver');
+rendreSaison('ete');
+</script>
+<script src="site.js?v=7"></script>
+
+</body>
+</html>
