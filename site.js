@@ -59,13 +59,13 @@
 var MAX_ARTICLES = 1;
 
 var panier = [];
-try { panier = JSON.parse(localStorage.getItem('solstice-panier')) || []; } catch (e) {}
+try { panier = JSON.parse(localStorage.getItem('mecloth-panier')) || []; } catch (e) {}
 // On normalise : quantité forcée à 1 et panier tronqué (anciens paniers enregistrés)
 panier = panier
   .map(function (l) { return { id: l.id, taille: l.taille || null, qte: 1 }; })
   .slice(0, MAX_ARTICLES);
 
-function sauverPanier() { localStorage.setItem('solstice-panier', JSON.stringify(panier)); }
+function sauverPanier() { localStorage.setItem('mecloth-panier', JSON.stringify(panier)); }
 function lignePanier(id, taille) {
   return panier.filter(function (l) { return l.id === id && l.taille === taille; })[0];
 }
@@ -178,8 +178,8 @@ function fermePanier() { document.body.classList.remove('panier-ouvert'); }
     var corps = 'Bonjour,%0D%0A%0D%0AJe souhaite commander :%0D%0A' +
       encodeURIComponent(lignes.join('\n')).replace(/%0A/g, '%0D%0A') +
       '%0D%0A%0D%0AMerci !';
-    window.location.href = 'mailto:solstice.boutique@gmail.com?subject=' +
-      encodeURIComponent('Commande Solstice') + '&body=' + corps;
+    window.location.href = 'mailto:mecloth.boutique@gmail.com?subject=' +
+      encodeURIComponent('Commande Mecloth') + '&body=' + corps;
   });
 })();
 

@@ -583,7 +583,7 @@ section.boutique {
   background: rgba(255,255,255,.02);
 }
 .citation::before {
-  content: 'S';
+  content: 'M';
   position: absolute;
   font-size: 560px;
   font-weight: 700;

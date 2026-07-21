@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SOLSTICE — Fiche produit</title>
-<link rel="stylesheet" href="style.css?v=7">
+<title>MECLOTH — Fiche produit</title>
+<link rel="stylesheet" href="style.css?v=8">
 </head>
 <body>
 
@@ -41,7 +41,7 @@
 
 <header id="header">
   <div class="header-inner">
-    <a href="index.html" class="logo">Solstice<em>.</em></a>
+    <a href="index.html" class="logo">Mecloth<em>.</em></a>
     <nav class="principal">
       <a href="index.html#hiver">Hiver — Doudounes</a>
       <a href="index.html#ete">Été — Shorts</a>
@@ -77,7 +77,7 @@
 <footer>
   <div class="footer-inner">
     <div>
-      <a href="index.html" class="logo">Solstice<em>.</em></a>
+      <a href="index.html" class="logo">Mecloth<em>.</em></a>
       <p style="color:var(--gris);font-size:13px;font-weight:300;max-width:260px;margin-top:14px;">
         Doudounes &amp; shorts des plus grandes marques, sélectionnés avec soin.
       </p>
@@ -100,11 +100,11 @@
     </div>
     <div class="footer-col">
       <h4>Contact</h4>
-      <a href="mailto:solstice.boutique@gmail.com">solstice.boutique@gmail.com</a>
+      <a href="mailto:mecloth.boutique@gmail.com">mecloth.boutique@gmail.com</a>
     </div>
   </div>
   <div class="footer-bas">
-    <span>© 2026 Solstice. Tous droits réservés.</span>
+    <span>© 2026 Mecloth. Tous droits réservés.</span>
     <span>Boutique indépendante, non affiliée aux marques citées.</span>
   </div>
 </footer>
@@ -130,7 +130,7 @@
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
-<script src="catalogue.js?v=7"></script>
+<script src="catalogue.js?v=8"></script>
 <script>
 /* ---------- Rendu de la fiche produit ---------- */
 (function () {
@@ -139,7 +139,7 @@
   var p = produitParId(id);
   if (!p) { window.location.href = 'index.html'; return; }
 
-  document.title = 'SOLSTICE — ' + p.marque + ' ' + p.nom;
+  document.title = 'MECLOTH — ' + p.marque + ' ' + p.nom;
 
   var saisonNom = p.saison === 'hiver' ? 'Hiver — Doudounes' : 'Été — Shorts';
   var saisonLien = 'index.html#' + p.saison;
@@ -214,7 +214,7 @@
         '<div class="accordeons">' +
           '<details open><summary>Description</summary><div class="contenu">' + p.desc + '</div></details>' +
           '<details><summary>Détails &amp; entretien</summary><div class="contenu">Article ' + p.marque + ' — tailles disponibles : ' + p.tailles + '. Détails complets, matières et conseils d\'entretien communiqués sur demande. N\'hésite pas à nous écrire pour plus de photos ou d\'informations.</div></details>' +
-          '<details><summary>Livraison &amp; retours</summary><div class="contenu">Expédition soignée sous 24-48h partout en France avec suivi. Une question sur ta commande ? Le service client répond 7j/7 à solstice.boutique@gmail.com.</div></details>' +
+          '<details><summary>Livraison &amp; retours</summary><div class="contenu">Expédition soignée sous 24-48h partout en France avec suivi. Une question sur ta commande ? Le service client répond 7j/7 à mecloth.boutique@gmail.com.</div></details>' +
         '</div>' +
       '</div>' +
     '</div>' +
@@ -248,7 +248,7 @@
     var corps = encodeURIComponent('Bonjour,\r\n\r\nJe souhaite commander :\r\n- ' + p.marque + ' — ' + p.nom +
       ' | Taille : ' + tailleChoisie +
       (p.prix ? ' (' + p.prix + ' €)' : ' (prix sur demande)') + '\r\n\r\nMerci !');
-    window.location.href = 'mailto:solstice.boutique@gmail.com?subject=' + sujet + '&body=' + corps;
+    window.location.href = 'mailto:mecloth.boutique@gmail.com?subject=' + sujet + '&body=' + corps;
   });
 
   /* Changement de photo via les vignettes (quand il y aura des photos) */
@@ -261,7 +261,7 @@
   });
 })();
 </script>
-<script src="site.js?v=7"></script>
+<script src="site.js?v=8"></script>
 
 </body>
 </html>
