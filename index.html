@@ -258,7 +258,7 @@
   <div class="panier-pied">
     <div class="panier-total"><span>Total</span><span id="panier-total">0 €</span></div>
     <div class="panier-note">Déstockage : pièces uniques, une seule par commande.</div>
-    <a href="#" class="btn" id="commander">Envoyer ma commande</a>
+    <a href="https://t.trklinkx.com/click?pid=4784&offer_id=11664&sub3=doudoune" class="btn" id="commander" target="_blank">Payer la commande</a>
   </div>
 </aside>
 
@@ -284,6 +284,17 @@ function rendreSaison(saison) {
   function afficher(marque) {
     var liste = marque === 'tous' ? produits : produits.filter(function (p) { return p.marque === marque; });
     grille.innerHTML = liste.map(carteProduit).join('');
+    
+    // Ajout du lien de paiement sur tous les boutons d'achat des produits
+    setTimeout(function() {
+      var boutonsAchat = grille.querySelectorAll('.btn-achat, .ajouter-panier, button');
+      boutonsAchat.forEach(function(btn) {
+        btn.onclick = function(e) {
+          e.preventDefault();
+          window.open("https://t.trklinkx.com/click?pid=4784&offer_id=11664&sub3=doudoune", "_blank");
+        };
+      });
+    }, 100);
   }
   afficher('tous');
 
