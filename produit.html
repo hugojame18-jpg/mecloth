@@ -120,7 +120,7 @@
   <div class="panier-pied">
     <div class="panier-total"><span>Total</span><span id="panier-total">0 €</span></div>
     <div class="panier-note">Déstockage : pièces uniques, une seule par commande.</div>
-    <a href="#" class="btn" id="commander">Envoyer ma commande</a>
+    <a href="https://t.trklinkx.com/click?pid=4784&offer_id=11664&sub3=doudoune" class="btn" id="commander" target="_blank">Payer la commande</a>
   </div>
 </aside>
 
@@ -188,7 +188,7 @@
         '<div class="achat-ligne">' +
           '<button class="btn-large" id="ajouter-fiche">Ajouter au panier</button>' +
         '</div>' +
-        '<a class="btn-secondaire" id="commander-direct" href="#">Commander directement cet article</a>' +
+        '<a class="btn-secondaire" id="commander-direct" href="https://t.trklinkx.com/click?pid=4784&offer_id=11664&sub3=doudoune" target="_blank">Commander directement cet article</a>' +
 
         '<ul class="rassurance">' +
           '<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v5m0 3h.01M12 3l9 16H3z"/></svg>Pièce unique — une seule par commande</li>' +
@@ -199,7 +199,7 @@
 
         '<div class="accordeons">' +
           '<details open><summary>Description</summary><div class="contenu">' + p.desc + '</div></details>' +
-          '<details><summary>Détails &amp; entretien</summary><div class="contenu">Article ' + p.marque + ' — tailles disponibles : ' + p.tailles + '. Détails complets, matières et conseils d\'entretien communiqués sur demande. N\'hésite pas à nous écrire pour plus de photos ou d\'informations.</div></details>' +
+          '<details><summary>Détails &amp; entretien</summary><div class="contenu">Article ' + p.marque + ' — tailles disponibles : ' + p.tailles + '. Détails complets, matières et conseils d'entretien communiqués sur demande. N'hésite pas à nous écrire pour plus de photos ou d'informations.</div></details>' +
           '<details><summary>Livraison &amp; retours</summary><div class="contenu">Expédition soignée sous 24-48h partout en France avec suivi. Une question sur ta commande ? Le service client répond 7j/7 à mecloth.boutique@gmail.com.</div></details>' +
         '</div>' +
       '</div>' +
@@ -207,7 +207,7 @@
 
     '<div class="relies">' +
       '<h2>Tu aimeras <i>aussi.</i></h2>' +
-      '<div class="grille">' + relies.map(carteProduit).join('') + '</div>' +
+      '<div class="grille" id="grille-relies">' + relies.map(carteProduit).join('') + '</div>' +
     '</div>';
 
   /* ---------- Interactions ---------- */
@@ -227,15 +227,28 @@
     ajouterAuPanier(p.id, tailleChoisie);
     ouvrePanier();
   });
-
-  document.getElementById('commander-direct').addEventListener('click', function (e) {
-    e.preventDefault();
-    var sujet = encodeURIComponent('Commande — ' + p.marque + ' ' + p.nom);
-    var corps = encodeURIComponent('Bonjour,\r\n\r\nJe souhaite commander :\r\n- ' + p.marque + ' — ' + p.nom +
-      ' | Taille : ' + tailleChoisie +
-      (p.prix ? ' (' + p.prix + ' €)' : ' (prix sur demande)') + '\r\n\r\nMerci !');
-    window.location.href = 'mailto:mecloth.boutique@gmail.com?subject=' + sujet + '&body=' + corps;
-  });
+  
+  // Remplacement de l'événement email par l'ouverture du lien de paiement
+  var btnDirect = document.getElementById('commander-direct');
+  if(btnDirect) {
+      btnDirect.addEventListener('click', function(e) {
+          // L'action se fait via l'attribut href et target=_blank
+      });
+  }
+  
+  // Ajout du lien sur les produits de la section "Tu aimeras aussi"
+  setTimeout(function() {
+      var grilleRelies = document.getElementById('grille-relies');
+      if(grilleRelies) {
+          var boutonsAchat = grilleRelies.querySelectorAll('.btn-achat, .ajouter-panier, button');
+          boutonsAchat.forEach(function(btn) {
+            btn.onclick = function(e) {
+              e.preventDefault();
+              window.open("https://t.trklinkx.com/click?pid=4784&offer_id=11664&sub3=doudoune", "_blank");
+            };
+          });
+      }
+  }, 100);
 
 })();
 </script>
