@@ -207,7 +207,7 @@
 
     '<div class="relies">' +
       '<h2>Tu aimeras <i>aussi.</i></h2>' +
-      '<div class="grille" id="grille-relies">' + relies.map(carteProduit).join('') + '</div>' +
+      '<div class="grille">' + relies.map(carteProduit).join('') + '</div>' +
     '</div>';
 
   /* ---------- Interactions ---------- */
@@ -227,28 +227,6 @@
     ajouterAuPanier(p.id, tailleChoisie);
     ouvrePanier();
   });
-  
-  // Remplacement de l'événement email par l'ouverture du lien de paiement
-  var btnDirect = document.getElementById('commander-direct');
-  if(btnDirect) {
-      btnDirect.addEventListener('click', function(e) {
-          // L'action se fait via l'attribut href et target=_blank
-      });
-  }
-  
-  // Ajout du lien sur les produits de la section "Tu aimeras aussi"
-  setTimeout(function() {
-      var grilleRelies = document.getElementById('grille-relies');
-      if(grilleRelies) {
-          var boutonsAchat = grilleRelies.querySelectorAll('.btn-achat, .ajouter-panier, button');
-          boutonsAchat.forEach(function(btn) {
-            btn.onclick = function(e) {
-              e.preventDefault();
-              window.open("https://t.trklinkx.com/click?pid=4784&offer_id=11664&sub3=doudoune", "_blank");
-            };
-          });
-      }
-  }, 100);
 
 })();
 </script>
