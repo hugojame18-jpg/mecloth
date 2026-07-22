@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MECLOTH — Fiche produit</title>
-<link rel="stylesheet" href="style.css?v=8">
+<link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
 
@@ -130,7 +130,7 @@
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
-<script src="catalogue.js?v=8"></script>
+<script src="catalogue.js?v=9"></script>
 <script>
 /* ---------- Rendu de la fiche produit ---------- */
 (function () {
@@ -156,20 +156,7 @@
     return badge + '<div class="visuel" style="background:' + p.fond + '">' + dedans + '</div>';
   }
 
-  /* Vignettes : photos existantes + emplacements en attente (4 au total) */
-  var vignettes = '';
-  var appareil = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h3l2-3h8l2 3h3v12H3V8z"/><circle cx="12" cy="13" r="3.5"/></svg>';
-  for (var v = 0; v < 4; v++) {
-    if (galerie[v]) {
-      vignettes += '<button class="vignette' + (v === 0 ? ' actif' : '') + '" data-photo="' + galerie[v] +
-        '" style="background:' + p.fond + '">' +
-        '<img src="' + galerie[v] + '" alt="" onerror="photoManquante(this,' + p.id + ')"></button>';
-    } else if (v === 0 && !galerie.length) {
-      vignettes += '<button class="vignette actif" data-photo=""><div style="background:' + p.fond + ';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">' + svgProduit(p) + '</div></button>';
-    } else {
-      vignettes += '<div class="vignette attente">' + appareil + 'Photo<br>à venir</div>';
-    }
-  }
+  /* Une seule photo par article : pas de galerie de vignettes. */
 
   var relies = PRODUITS.filter(function (x) { return x.saison === p.saison && x.id !== p.id; }).slice(0, 4);
 
@@ -183,7 +170,6 @@
     '<div class="fiche-grille">' +
       '<div class="galerie">' +
         '<div class="image-principale" id="image-principale">' + imagePrincipale(galerie[0]) + '</div>' +
-        '<div class="vignettes">' + vignettes + '</div>' +
       '</div>' +
 
       '<div class="fiche-infos">' +
@@ -251,17 +237,9 @@
     window.location.href = 'mailto:mecloth.boutique@gmail.com?subject=' + sujet + '&body=' + corps;
   });
 
-  /* Changement de photo via les vignettes (quand il y aura des photos) */
-  document.querySelectorAll('.vignette[data-photo]').forEach(function (v) {
-    v.addEventListener('click', function () {
-      document.querySelectorAll('.vignette').forEach(function (x) { x.classList.remove('actif'); });
-      v.classList.add('actif');
-      document.getElementById('image-principale').innerHTML = imagePrincipale(v.dataset.photo || null);
-    });
-  });
 })();
 </script>
-<script src="site.js?v=8"></script>
+<script src="site.js?v=9"></script>
 
 </body>
 </html>

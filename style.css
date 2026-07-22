@@ -903,43 +903,6 @@ body.panier-ouvert .panier { transform: none; }
   filter: drop-shadow(0 24px 44px rgba(0,0,0,.5));
 }
 .image-principale .badge { top: 18px; left: 18px; }
-.vignettes {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin-top: 14px;
-}
-.vignette {
-  aspect-ratio: 1;
-  border-radius: 12px;
-  border: 1px solid var(--ligne);
-  background: var(--carte);
-  overflow: hidden;
-  cursor: pointer;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color .25s;
-  padding: 0;
-}
-.vignette:hover, .vignette.actif { border-color: rgba(212,175,106,.55); }
-.vignette img { width: 100%; height: 100%; object-fit: contain; }
-.vignette svg { width: 62%; }
-.vignette.attente {
-  border-style: dashed;
-  border-color: rgba(255,255,255,.14);
-  cursor: default;
-  flex-direction: column;
-  gap: 6px;
-  color: var(--gris-2);
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  text-align: center;
-}
-.vignette.attente svg { width: 20px; opacity: .5; }
 
 /* Infos produit */
 .fiche-infos .marque-fiche {
