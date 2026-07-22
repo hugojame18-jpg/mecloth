@@ -544,8 +544,15 @@ section.boutique {
   transform: translateY(10px);
   transition: all .35s var(--transition);
   backdrop-filter: blur(6px);
+  /* Invisible = non cliquable. Sans cela le bouton intercepte les clics
+     destines a la photo et ouvre le panier au lieu d'ouvrir la fiche. */
+  pointer-events: none;
 }
-.carte:hover .carte-ajout { opacity: 1; transform: none; }
+.carte:hover .carte-ajout {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
 .carte-ajout:hover { background: var(--or); }
 .carte-infos { padding: 16px 4px 0; }
 .carte-marque {
