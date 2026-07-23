@@ -162,24 +162,16 @@ function fermePanier() { document.body.classList.remove('panier-ouvert'); }
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') fermePanier(); });
 })();
 
-/* Envoi de commande par mail */
+/* Vérifie juste que le panier n'est pas vide */
 (function () {
   var btn = document.getElementById('commander');
   if (!btn) return;
+
   btn.addEventListener('click', function (e) {
-    e.preventDefault();
-    if (!panier.length) { toast('Ton panier est vide'); return; }
-    var lignes = panier.map(function (l) {
-      var p = produitParId(l.id);
-      return '- ' + p.marque + ' — ' + p.nom +
-        ' | Taille : ' + (l.taille || 'à préciser') +
-        (p.prix ? ' (' + p.prix + ' €)' : ' (prix sur demande)');
-    });
-    var corps = 'Bonjour,%0D%0A%0D%0AJe souhaite commander :%0D%0A' +
-      encodeURIComponent(lignes.join('\n')).replace(/%0A/g, '%0D%0A') +
-      '%0D%0A%0D%0AMerci !';
-    window.location.href = 'mailto:mecloth.boutique@gmail.com?subject=' +
-      encodeURIComponent('Commande Mecloth') + '&body=' + corps;
+    if (!panier.length) {
+      e.preventDefault();
+      toast('Ton panier est vide');
+    }
   });
 })();
 
